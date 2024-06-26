@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkQwik - Your Smart Parking Solution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image: url('https://media.visartech.com/wp-content/uploads/2020/05/15144102/What-is-Interactive-App-and-Why-It-Matters-for-Your-Business.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 128, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 100;
+        }
+
+        header img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #008000;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .service {
+            flex: 0 1 calc(33.33% - 40px);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+        }
+
+        .service img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .service h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            width: 100%;
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .slide {
+            flex: none;
+            width: 80vw;
+            height: 650px; /* Adjust the height as needed */
+            scroll-snap-align: center;
+            margin: 0 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            object-fit: cover;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio and cover the slide */
+            transition: transform 0.3s ease;
+        }
+
+        .slide:hover {
+            transform: scale(1.05);
+        }
+
+        .slide p {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .plan {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .plan:hover {
+            transform: translateY(-5px);
+        }
+
+        .plan img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #008000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005900;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #008000;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://images.yourstory.com/cs/images/companies/950b63d9cde2-InShot202302051710556151-1676441549123.jpg?fm=auto&ar=1:1&mode=fill&fill=solid&fill-color=fff" alt="ParkQwik Logo">
+        <h1>ParkQwik</h1>
+        <p>Your Smart Parking Solution</p>
+    </header>
+    
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service">
+                <img src="https://th.bing.com/th/id/OIP.5urRG6kvcxsNGDPzT81vYwHaDq?rs=1&pid=ImgDetMain" alt="Real-time Parking Availability">
+                <h3>Real-time Parking Availability</h3>
+                <p>Find available parking spots instantly with real-time updates.</p>
+            </div>
+            <div class="service">
+                <img src="https://th.bing.com/th/id/OIP.4ewH5CtC94-26YpuOFIUOAAAAA?w=281&h=280&rs=1&pid=ImgDetMain" alt="Secure Payments">
+                <h3>Secure Payments</h3>
+                <p>Enjoy seamless and secure payment options for a worry-free parking experience.</p>
+            </div>
+            <div class="service">
+                <img src="https://img.freepik.com/premium-vector/user-interface-modern-flat-green-color-illustration_115338-17.jpg" alt="User-friendly Interface">
+                <h3>User-friendly Interface</h3>
+                <p>Navigate easily with our intuitive app design, making parking a breeze.</p>
+            </div>
+            <div class="service">
+                <img src="https://th.bing.com/th/id/OIP.Krchhdi-rT3vUsHjxo5zuAHaHa?rs=1&pid=ImgDetMain" alt="24/7 Customer Support">
+                <h3>24/7 Customer Support</h3>
+                <p>Get assistance anytime with our dedicated round-the-clock support team.</p>
+            </div>
+            <div class="service">
+                <img src="https://www.greentrackgps.co.uk/uploads/images/medium/Tracking.png" alt="Vehicle Tracking">
+                <h3>Vehicle Tracking</h3>
+                <p>Track your vehicle's location and movement in real-time.</p>
+            </div>
+            <div class="service">
+                <img src="https://thumbs.dreamstime.com/z/green-discount-sticker-illustration-20224318.jpg" alt="Discount Alerts">
+                <h3>Discount Alerts</h3>
+                <p>Receive notifications for discounts and special offers on parking.</p>
+            </div>
+        </div>
+        <button id="addVehicleBtn">Add Vehicle</button>
+    </section>
+    
+    <section id="offers">
+        <h2>Offers</h2>
+        <div class="slider" id="offerSlider">
+            <div class="slide">
+                <img src="https://pbs.twimg.com/media/F-ykOVQaAAAiYxf.jpg" alt="Offer 1">
+                <p>Protect your car with cover</p>
+            </div>
+            <div class="slide">
+                <img src="https://pbs.twimg.com/media/F-kMz-ebIAAqWDv.jpg" alt="Offer 2">
+                <p>Get car wash upto 20% off!</p>
+            </div>
+            <div class="slide">
+                <img src="https://pbs.twimg.com/media/F-duh6aXoAAJMGC.jpg" alt="Offer 3">
+                <p>Exclusive deals for premium members!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="premium-plans">
+        <h2>Premium Plans</h2>
+        <div class="plan" onclick="subscribe('Basic Plan')">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/580/439/large_2x/subscription-plans-rgb-color-icon-vector.jpg" alt="Basic Plan">
+            <h3>Basic Plan</h3>
+            <p>$10/month - Includes 5 hours of free parking each month.</p>
+        </div>
+        <div class="plan" onclick="subscribe('Premium Plan')">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/580/439/large_2x/subscription-plans-rgb-color-icon-vector.jpg" alt="Premium Plan">
+            <h3>Premium Plan</h3>
+            <p>$25/month - Includes 15 hours of free parking each month and priority customer support.</p>
+        </div>
+        <div class="plan" onclick="subscribe('Ultimate Plan')">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/580/439/large_2x/subscription-plans-rgb-color-icon-vector.jpg" alt="Ultimate Plan">
+            <h3>Ultimate Plan</h3>
+            <p>$50/month - Unlimited parking and exclusive access to premium locations.</p>
+        </div>
+    </section>
+    
+    <section id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="step">
+            <h3>1. Download the App</h3>
+            <p>Get the ParkQwik app from Google Play or the App Store.</p>
+        </div>
+        <div class="step">
+            <h3>2. Sign Up and Log In</h3>
+            <p>Create your account and log in to start using our services.</p>
+        </div>
+        <div class="step">
+            <h3>3. Find Parking</h3>
+            <p>Search for available parking spots near your destination.</p>
+        </div>
+        <div class="step">
+            <h3>4. Park and Pay</h3>
+            <p>Once parked, pay conveniently using our secure payment options.</p>
+        </div>
+        <div class="step">
+            <h3>5. Enjoy Your Stay!</h3>
+            <p>Relax knowing your vehicle is safe while you enjoy your time.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 ParkQwik. All rights reserved. | Designed by Sujitha</p>
+    </footer>
+
+    <script>
+        // JavaScript for adding vehicles
+        function addVehicle() {
+            alert('Adding a new vehicle to your account!');
+            // Add your logic here for adding a vehicle
+        }
+
+        function subscribe(planName) {
+            alert(planName + ' subscription added!');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const offerSlider = document.getElementById('offerSlider');
+            const slides = offerSlider.querySelectorAll('.slide');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.style.display = 'block';
+                    } else {
+                        slide.style.display = 'none';
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            // Automatically change slide every 5 seconds
+            setInterval(nextSlide, 3000); // Change slide every 5 seconds
+        });
+    </script>
+</body>
+</html>
